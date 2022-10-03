@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./styles.css";
 
 function double(num) {
@@ -12,7 +12,7 @@ export default function App() {
   const [number, setNumber] = useState(0);
   const [emojis, setEmojis] = useState({ data: [], loading: true });
 
-  const doubledNumber = double(number);
+  const doubledNumber = useMemo(() => double(number), [number]);
 
   function handleFetchEmojis() {
     console.log("running fetch emojis");
